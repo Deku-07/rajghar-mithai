@@ -1,0 +1,171 @@
+@import "tailwindcss";
+
+@theme {
+  --color-maroon: #510D19;
+  --color-maroon-deep: #2D060D;
+  --color-maroon-shadow: #1A0307;
+  --color-burgundy: #701D2A;
+  --color-gold: #C6A15B;
+  --color-champagne: #E5CC91;
+  --color-ivory: #F5EBDD;
+  --color-saffron: #D88A32;
+  --color-chocolate: #321C17;
+
+  --font-display: "Cinzel", "Cormorant Garamond", Georgia, serif;
+  --font-serif: "Cormorant Garamond", Georgia, serif;
+  --font-sans: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+}
+
+@layer base {
+  html {
+    background-color: #2D060D;
+    color: #F5EBDD;
+    font-family: var(--font-sans);
+    scroll-behavior: auto;
+    overflow-x: hidden;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    background-color: #510D19;
+    background-image:
+      radial-gradient(ellipse 90% 60% at 50% 0%, rgba(112, 29, 42, 0.55) 0%, transparent 70%),
+      radial-gradient(circle at 20% 50%, rgba(50, 28, 23, 0.45) 0%, transparent 60%);
+    overflow-x: hidden;
+    overscroll-behavior-y: none;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #2D060D;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: rgba(198, 161, 91, 0.45);
+    border-radius: 3px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #C6A15B;
+  }
+}
+
+/* Luxury film grain & silk sheen */
+.silk-grain {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 240 240' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.045'/%3E%3C/svg%3E");
+}
+
+/* Rajasthani Jharokha Arch silhouette */
+.jharokha-arch {
+  border-radius: 50% 50% 6px 6px / 34% 34% 6px 6px;
+}
+
+.jharokha-cusped {
+  clip-path: polygon(
+    50% 0%,
+    62% 3%,
+    73% 9%,
+    84% 16%,
+    93% 26%,
+    98% 38%,
+    100% 52%,
+    100% 100%,
+    0% 100%,
+    0% 52%,
+    2% 38%,
+    7% 26%,
+    16% 16%,
+    27% 9%,
+    38% 3%
+  );
+}
+
+/* Subtle metallic antique gold text sheen (never neon/cheap) */
+.text-antique-gold {
+  background: linear-gradient(135deg, #E5CC91 0%, #C6A15B 45%, #A67F3D 75%, #E5CC91 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Hairline border glow */
+.gold-hairline {
+  border-color: rgba(198, 161, 91, 0.28);
+}
+
+.gold-hairline-strong {
+  border-color: rgba(229, 204, 145, 0.55);
+}
+
+/* Kinetic marquee / subtle float */
+@keyframes floatSlow {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(0.4deg);
+  }
+}
+
+.animate-float-slow {
+  animation: floatSlow 7s ease-in-out infinite;
+}
+
+@keyframes pulseRing {
+  0% {
+    transform: scale(0.95);
+    opacity: 0.7;
+  }
+  70% {
+    transform: scale(1.65);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1.65);
+    opacity: 0;
+  }
+}
+
+.animate-pulse-ring {
+  animation: pulseRing 2.4s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+}
+
+/* Iris curtain transition */
+@keyframes irisSweep {
+  0% {
+    clip-path: circle(0% at 50% 50%);
+    opacity: 1;
+  }
+  65% {
+    clip-path: circle(135% at 50% 50%);
+    opacity: 1;
+  }
+  100% {
+    clip-path: circle(150% at 50% 50%);
+    opacity: 0;
+  }
+}
+
+.animate-iris-sweep {
+  animation: irisSweep 1.25s cubic-bezier(0.77, 0, 0.175, 1) forwards;
+}
+
+/* Hide custom cursor on touch devices */
+@media (pointer: coarse) {
+  .custom-cursor-layer {
+    display: none !important;
+  }
+}
+
+/* Hide scrollbars for horizontal touch filter ribbons */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
